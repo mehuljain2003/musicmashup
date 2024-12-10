@@ -195,20 +195,20 @@ async def account_login(bot: Client, m: Message):
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             elif "/khansirvod4" and "akamaized" in url:
               url = url.replace(url.split("/")[-1], raw_text2+".m3u8")
-                
-
-            elif '/master.mpd' in url:
-             id =  url.split("/")[-2]
-             url = f"https://stream.pwjarvis.app/{id}/hls/{raw_text2}/main.m3u8"
-
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            name = f'{str(count).zfill(3)}) {name1[:60]}'
-
             if "youtu" in url:
-                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
-            else:
-                ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
-            if "embed" in url:
+                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+             else:
+                 ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
+
+             if "acecwply" in url:
+                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
+        
+             elif "jw-prod" in url:
+                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
+             else:
+                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
+   
+             if "embed" in url:
                  ytf = f"bestvideo[height<={raw_text2}]+bestaudio/best[height<={raw_text2}]"
              elif "youtube" in url:
                  ytf = f"bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]/best[height<={raw_text2}][ext=mp4]"
@@ -236,6 +236,20 @@ async def account_login(bot: Client, m: Message):
                  cmd = "pdf"
              else:
                  cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
+                
+
+            elif '/master.mpd' in url:
+             id =  url.split("/")[-2]
+             url = f"https://stream.pwjarvis.app/{id}/hls/{raw_text2}/main.m3u8"
+
+            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+            name = f'{str(count).zfill(3)}) {name1[:60]}'
+
+            if "youtu" in url:
+                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+            else:
+                ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
+        
 
             if "jw-prod" in url:
                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
