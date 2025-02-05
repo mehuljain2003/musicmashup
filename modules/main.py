@@ -220,8 +220,22 @@ async def account_login(bot: Client, m: Message):
 
             try:  
                 
-                cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n\n**Batch Name :** {raw_text0}\n\n**Downloaded By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})**'
-                cc1 = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.pdf \n\n**Batch Name :** {raw_text0}\n\n**Downloaded By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})**'
+                ##cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n\n**Batch Name :** {raw_text0}\n\n**Downloaded By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})**'
+                ##cc1 = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.pdf \n\n**Batch Name :** {raw_text0}\n\n**Downloaded By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})**'
+                cc = f'''
+                🎬 **`{str(count).zfill(3)}`** » **{𝗻𝗮𝗺𝗲𝟭}{MR}.mkv**
+                ━━━━━━━━━━━━━━
+                📦 **Batch:** `{raw_text0}`
+                ⬇️ **Downloaded By:** [{m.from_user.first_name}](tg://user?id={m.from_user.id}) 👤
+                '''
+
+                cc1 = f'''
+                📄 **`{str(count).zfill(3)}`** » **{𝗻𝗮𝗺𝗲𝟭}{MR}.pdf**
+                ━━━━━━━━━━━━━━
+                📦 **Batch:** `{raw_text0}`
+                ⬇️ **Downloaded By:** [{m.from_user.first_name}](tg://user?id={m.from_user.id}) 👤
+                '''
+
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
